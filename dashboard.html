@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart University - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-university me-2"></i>Smart University</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light btn-sm" onclick="logout()"><i
+                                class="fas fa-sign-out-alt me-1"></i>Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse show">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active text-primary fw-bold" href="dashboard.html">
+                                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="registration.html">
+                                <i class="fas fa-user-plus me-2"></i>Registration Form
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="students_list.html">
+                                <i class="fas fa-users me-2"></i>Student List
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2"><i class="fas fa-chart-line me-2"></i>Admin Dashboard</h1>
+                </div>
+
+                <div class="row">
+                    <!-- Card 1: Register Student -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-user-plus fa-3x text-primary mb-3"></i>
+                                <h5 class="card-title">New Registration</h5>
+                                <p class="card-text">Register a new student into the system.</p>
+                                <a href="registration.html" class="btn btn-primary"><i
+                                        class="fas fa-arrow-right me-1"></i>Go to Registration</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: View Students -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-list-alt fa-3x text-success mb-3"></i>
+                                <h5 class="card-title">Student Records</h5>
+                                <p class="card-text">View, edit, or delete student profiles.</p>
+                                <a href="students_list.html" class="btn btn-success"><i class="fas fa-eye me-1"></i>View
+                                    Students</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Section (Mock) -->
+                <div class="row mt-4">
+                    <div class="col-md-4">
+                        <div class="card bg-info text-white">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-users me-2"></i>Total Students</h5>
+                                <p class="card-text display-4" id="totalStudentsCount">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-warning text-dark">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-clock me-2"></i>Pending Approvals</h5>
+                                <p class="card-text display-4">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-danger text-white">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-server me-2"></i>System Status</h5>
+                                <p class="card-text display-6"><i class="fas fa-check-circle me-1"></i>Online</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        checkAuth();
+        // Update stats
+        const students = getStudents();
+        document.getElementById('totalStudentsCount').innerText = students.length;
+    </script>
+</body>
+
+</html>
